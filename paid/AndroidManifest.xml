@@ -24,6 +24,7 @@ along with SwiFTP.  If not, see <http://www.gnu.org/licenses/>.
     android:versionCode="20801"
     android:versionName="2.8.1" >
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -31,7 +32,8 @@ along with SwiFTP.  If not, see <http://www.gnu.org/licenses/>.
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-
+	
+    
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
@@ -73,10 +75,12 @@ along with SwiFTP.  If not, see <http://www.gnu.org/licenses/>.
         <!-- Don't export this receiver in free, this clashes with paid -->
         <receiver
             android:name="be.ppareit.swiftp.RequestStartStopReceiver"
+            android:enabled="true"
             android:exported="false" >
             <intent-filter>
                 <action android:name="be.ppareit.swiftp.ACTION_START_FTPSERVER" />
                 <action android:name="be.ppareit.swiftp.ACTION_STOP_FTPSERVER" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
